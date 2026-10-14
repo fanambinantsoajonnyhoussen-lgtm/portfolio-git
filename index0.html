@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FANAMBINANTSOA DESIGN — Designer Graphique</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #1c1c1e;
+    --white: #fafafa;
+    --accent: #1d4ed8;
+    --accent2: #0f2855;
+    --accent3: #64748b;
+    --gray: #6b7280;
+    --light: #f1f5f9;
+    --border: rgba(0,0,0,0.09);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(29,78,216,0.12);
+  }
+  .nav-logo {
+    font-family: 'poppins', serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.03em;
+    color: var(--black);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--gray);
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--black); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 4rem;
+    padding-top: 80px;
+    gap: 4rem;
+  }
+  .hero-text { max-width: 520px; }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size:clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .hero-name em {
+    font-style: italic;
+     font-family: 'Almote', serif;
+    color: var(--accent);
+  }
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--gray);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  .hero-bio {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 2.5rem;
+    border-left: 2px solid var(--accent);
+    padding-left: 1.2rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.85rem 2rem;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background 0.25s;
+  }
+  .btn-primary:hover { background: var(--accent2); }
+  .btn-outline {
+    border: 1px solid var(--black);
+    color: var(--black);
+    padding: 0.85rem 2rem;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { background: var(--black); color: var(--white); }
+
+  .hero-photo {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .photo-frame {
+    position: relative;
+    width: 420px;
+    max-width: 100%;
+  }
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 100%; height: 100%;
+    border: 2px solid var(--accent);
+    border-radius: 0.5rem;
+    z-index: 0;
+  }
+  .photo-frame img {
+    position: relative; z-index: 1;
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 0.5rem;
+    display: block;
+    filter: grayscale(10%);
+  }
+  .photo-badge {
+    position: absolute; bottom: 2rem; left: -2rem; z-index: 2;
+    background: var(--accent2);
+    color: var(--white);
+    padding: 1rem 1.4rem;
+    border-radius: 0.4rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  .photo-badge strong { font-size: 1.4rem; display: block; font-family: 'Playfair Display', serif; color: var(--accent); }
+
+  /* STATS */
+  .stats {
+    display: flex;
+    gap: 0;
+    background: var(--accent2);
+    color: var(--white);
+  }
+  .stat-item {
+    flex: 1;
+    padding: 2.5rem 3rem;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: var(--accent);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 4rem; }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    line-height: 1.15;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  /* SERVICES */
+  .services-bg { background: var(--light); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 0.5rem;
+    padding: 2rem 1.6rem;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+  }
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .service-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
+
+  /* PORTFOLIO */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    aspect-ratio: 3/4;
+    cursor: pointer;
+  }
+  .portfolio-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+  .portfolio-item:hover img { transform: scale(1.05); }
+  .portfolio-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(14,14,14,0.85) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.35s;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 1.5rem;
+  }
+  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+  .portfolio-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  .portfolio-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+  }
+
+  /* TOOLS */
+  .tools-section { background: var(--light); }
+  .tools-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .tool-pill {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 2rem;
+    padding: 0.6rem 1.4rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .tool-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--accent2);
+    color: var(--white);
+    text-align: center;
+  }
+  .contact-section .section-title { color: var(--white); }
+  .contact-section .section-tag { color: var(--accent); }
+  .contact-email {
+    font-family: 'poppins', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    color: var(--accent);
+    text-decoration: none;
+    display: inline-block;
+    margin: 2rem 0;
+    border-bottom: 1px solid rgba(29,78,216,0.4);
+    padding-bottom: 0.3rem;
+    transition: color 0.25s;
+  }
+  .contact-email:hover { color: var(--white); }
+  .contact-note { color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-top: 3rem; }
+
+  .contact-whatsApp:hover { color: var(--white); }
+  .contact-note { color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-top: 3rem; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: #000;
+    color: rgba(255,255,255,0.25);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 3rem; }
+    .hero-photo { order: -1; }
+    .photo-frame { width: 100%; }
+    .photo-frame img { height: 380px; }
+    .photo-badge { left: 0; bottom: 1rem; }
+    .stats { flex-wrap: wrap; }
+    .stat-item { flex: 1 1 50%; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    section { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">FANAMBINANTSOA DESIGN</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#outils">Outils</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-tag">FANAMBINANTSOA DESIGN</span>
+    <h1 class="hero-name">
+      Fanambinantsoa<br><em>Jonny</em>
+    </h1>
+    <p class="hero-subtitle">HERINANDRASANA Fanambinantsoa Jonny Houssen</p>
+    <p class="hero-bio">
+     Je suis un designer graphique junior qui ne conçoit pas le design comme de la simple décoration, mais comme un levier pour faire rayonner des projets.
+      Depuis un an, je traduis des briefs complexes en univers visuels uniques, structurés et modernes.
+    </p>
+    <div class="hero-cta">
+      <a href="#portfolio" class="btn-primary">Voir mes projets</a>
+      <a href="#contact" class="btn-outline">Me contacter</a>
+    </div>
+  </div>
+
+  <div class="hero-photo">
+    <div class="photo-frame">
+      <img src="portrait.jpg" alt="Portrait de Jonny Houssen">
+      <div class="photo-badge">
+        <strong>1+</strong>
+        an d'expérience
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-item">
+    <span class="stat-num">4+</span>
+    <span class="stat-label">Types de créations</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">2</span>
+    <span class="stat-label">Outils maîtrisés</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">∞</span>
+    <span class="stat-label">Créativité</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">Passion & rigueur</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="section-header">
+    <span class="section-tag">Ce que je fais</span>
+    <h2 class="section-title">Mes <em>services</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3 class="service-name">Affiche & Flyers</h3>
+      <p class="service-desc">Conceptions impactantes pour vos événements, campagnes et promotions. Chaque visuel raconte une histoire.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📇</div>
+      <h3 class="service-name">Carte de visite</h3>
+      <p class="service-desc">Identités professionnelles soignées qui reflètent votre personnalité et inspirent confiance au premier regard.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3 class="service-name">Posts Réseaux Sociaux</h3>
+      <p class="service-desc">Contenus visuels optimisés pour Instagram, Facebook et LinkedIn — cohérents, accrocheurs, engageants.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✏️</div>
+      <h3 class="service-name">Identité visuelle</h3>
+      <p class="service-desc">Du brief au rendu final, je construis des univers visuels uniques qui font rayonner votre projet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-header">
+    <span class="section-tag">Réalisations</span>
+    <h2 class="section-title">Mon <em>projet</em></h2>
+  </div>
+  <div class="portfolio-grid">
+
+    <div class="portfolio-item">
+      <img src="CLIO 2EM.jpg" alt="Affiche EMIM - Triangle d'exposition">
+      <div class="portfolio-overlay">
+        <span class="portfolio-label">Affiche événement</span>
+        <span class="portfolio-title">EMIM — Triangle d'exposition</span>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="tena izy.jpg" alt="Affiche Eglise Royal Salut">
+      <div class="portfolio-overlay">
+        <span class="portfolio-label">Affiche événement religieux</span>
+        <span class="portfolio-title">Eglise Royal Salut — Toliara</span>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="MAYLLAH BIRTH.jpg" alt="Carte anniversaire Mayllah">
+      <div class="portfolio-overlay">
+        <span class="portfolio-label">Design célébration</span>
+        <span class="portfolio-title">Happy Birthday — Mayllah</span>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="LISTE.jpg" alt="Liste des joueurs EMIKI">
+      <div class="portfolio-overlay">
+        <span class="portfolio-label">Post réseaux sociaux</span>
+        <span class="portfolio-title">EMIKI — Liste des joueurs</span>
+      </div>
+    </div>
+
+    <div class="portfolio-item" style="aspect-ratio: 1;">
+      <img src="Red and White Simple Podcast Facebook Post.jpg" alt="JO Créa - Voix off">
+      <div class="portfolio-overlay">
+        <span class="portfolio-label">Post Facebook</span>
+        <span class="portfolio-title">JO Créa — Voix Off & Spot</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- OUTILS -->
+<section id="outils" class="tools-section">
+  <div class="section-header">
+    <span class="section-tag">Ma boîte à outils</span>
+    <h2 class="section-title">Outils &amp; <em>compétences</em></h2>
+  </div>
+  <p style="color: var(--gray); max-width: 560px; line-height: 1.8; font-size: 0.95rem;">
+    Je maîtrise les logiciels de création graphique professionnels pour produire des visuels 
+    de haute qualité, adaptés à tous les supports print et digitaux.
+  </p>
+  <div class="tools-list">
+    <span class="tool-pill"><span class="tool-dot"></span>Adobe Photoshop</span>
+    <span class="tool-pill"><span class="tool-dot"></span>Canva</span>
+    <span class="tool-pill"><span class="tool-dot"></span>Conception d'affiches</span>
+    <span class="tool-pill"><span class="tool-dot"></span>Flyers & print</span>
+    <span class="tool-pill"><span class="tool-dot"></span>Réseaux sociaux</span>
+    <span class="tool-pill"><span class="tool-dot"></span>Carte de visite</span>
+    <span class="tool-pill"><span class="tool-dot"></span>Typographie</span>
+    <span class="tool-pill"><span class="tool-dot"></span>Mise en page</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-header">
+    <span class="section-tag">Travaillons ensemble</span>
+    <h2 class="section-title">Prêt à donner vie<br>à <em>votre projet</em> ?</h2>
+  </div>
+  <p style="color: rgba(255,255,255,0.55); max-width: 500px; margin: 0 auto; line-height: 1.8;">
+    Vous avez un projet, une idée, un brief ? Contactez-moi et construisons ensemble 
+    un univers visuel qui vous ressemble.
+  </p>
+  <a class="contact-email" href="mailto:+261387125252">
+    WhatsApp:+261387125252
+  </a>
+  <br>
+  <a class="contact-whatsApp" href="mailto:fanambinantsoajonnyhoussen@gmail.com">
+    fanambinantsoajonnyhoussen@gmail.com
+  </a>
+  <p class="contact-note">Basé à Madagascar · Disponible pour mission à distance</p>
+</section>
+
+<footer>
+  © 2025 FANAMBINANTSOA DESIGN — Jonny Houssen · Tous droits réservés
+</footer>
+
+</body>
+</html>
