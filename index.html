@@ -2,47 +2,57 @@
 <html lang="fr" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Fanambinantsoa Jonny Houssen — 
+Designer graphique à Madagascar. Affiches, cartes de visite, identité visuelle et 
+contenus réseaux sociaux.">
 <title>FANAMBINANTSOA DESIGN — Designer Graphique</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,300;1,500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%A8%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* ─── THEME VARIABLES ─── */
 [data-theme="light"] {
-  --bg: #f7f6f3;
-  --bg2: #edecea;
+  --bg: #f5f6f9;
+  --bg2: #eceef3;
   --surface: #ffffff;
-  --surface2: #f0eff0;
-  --text: #111110;
-  --text2: #555550;
-  --text3: #999990;
-  --accent: #1a3cff;
-  --accent-dark: #0f2399;
-  --accent-light: rgba(26,60,255,0.08);
-  --navy: #0b1f4a;
-  --border: rgba(0,0,0,0.08);
-  --shadow: rgba(0,0,0,0.07);
-  --nav-bg: rgba(247,246,243,0.92);
-  --toggle-icon: "☀️";
+  --surface2: #eef0f5;
+  --text: #12141c;
+  --text2: #4b5163;
+  --text3: #8b90a3;
+  --accent: #2648e6;
+  --accent-dark: #1a34b0;
+  --accent-light: rgba(38,72,230,0.08);
+  --accent-tint: #8fa0ff;
+  --navy: #0b1330;
+  --border: rgba(10,14,30,0.09);
+  --shadow: rgba(10,14,30,0.08);
+  --nav-bg: rgba(245,246,249,0.92);
 }
 [data-theme="dark"] {
-  --bg: #0e0e10;
-  --bg2: #16161a;
-  --surface: #1c1c22;
-  --surface2: #222228;
-  --text: #f0eff0;
-  --text2: #a0a09a;
-  --text3: #555550;
-  --accent: #5b7cff;
-  --accent-dark: #3a5aee;
-  --accent-light: rgba(91,124,255,0.12);
-  --navy: #2a4fc4;
-  --border: rgba(255,255,255,0.08);
-  --shadow: rgba(0,0,0,0.4);
-  --nav-bg: rgba(14,14,16,0.92);
-  --toggle-icon: "🌙";
+  --bg: #0a0b10;
+  --bg2: #121319;
+  --surface: #181a22;
+  --surface2: #1e2029;
+  --text: #eef0f5;
+  --text2: #a3a8ba;
+  --text3: #656b7f;
+  --accent: #6f86ff;
+  --accent-dark: #4c62ea;
+  --accent-light: rgba(111,134,255,0.14);
+  --accent-tint: #9aa8ff;
+  --navy: #0f1830;
+  --border: rgba(255,255,255,0.09);
+  --shadow: rgba(0,0,0,0.45);
+  --nav-bg: rgba(10,11,16,0.92);
 }
+
+/* ─── TYPE SYSTEM ───
+   Display / accents : Cormorant Garamond (serif, editorial)
+   UI / structure     : Syne (geometric sans, distinctive weight) */
 
 html { scroll-behavior: smooth; }
 
@@ -52,30 +62,41 @@ body {
   color: var(--text);
   overflow-x: hidden;
   transition: background 0.4s, color 0.4s;
-  cursor: none;
 }
 
-/* ─── CUSTOM CURSOR ─── */
-.cursor {
-  position: fixed; top: 0; left: 0; z-index: 9999;
-  width: 10px; height: 10px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
-.cursor-ring {
-  position: fixed; top: 0; left: 0; z-index: 9998;
-  width: 36px; height: 36px;
-  border: 1.5px solid var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s ease-out, width 0.3s, height 0.3s, opacity 0.3s;
-  opacity: 0.6;
+
+/* ─── CUSTOM CURSOR (mouse only) ─── */
+.cursor, .cursor-ring { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+  .cursor {
+    display: block;
+    position: fixed; top: 0; left: 0; z-index: 9999;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+  }
+  .cursor-ring {
+    display: block;
+    position: fixed; top: 0; left: 0; z-index: 9998;
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, width 0.3s, height 0.3s, opacity 0.3s;
+    opacity: 0.6;
+  }
+  body:hover .cursor-ring { opacity: 1; }
 }
-body:hover .cursor-ring { opacity: 1; }
 
 /* ─── NAVBAR ─── */
 nav {
@@ -90,13 +111,14 @@ nav {
 }
 .nav-logo {
   font-family: 'Poppins black', sans-serif;
-  font-weight: 800;
-  font-size: 1rem;
+  font-weight: 100;
+  font-size: 20px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text);
   text-decoration: none;
   transition: color 0.3s;
+
 }
 .nav-logo span { color: var(--accent); }
 .nav-center {
@@ -211,14 +233,14 @@ nav {
 .hero-badge {
   display: inline-flex; align-items: center; gap: 0.5rem;
   background: var(--accent-light);
-  border: 1px solid rgba(26,60,255,0.2);
+  border: 1px solid rgba(38,72,230,0.22);
   color: var(--accent);
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   padding: 0.45rem 1rem;
   border-radius: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.6rem;
   font-weight: 600;
 }
 .hero-badge-dot {
@@ -229,6 +251,14 @@ nav {
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.4; transform: scale(0.7); }
+}
+.hero-fullname {
+  font-family: 'Almote', serif;
+  font-size: clamp(3.2rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
 }
 .hero-name {
   font-family: 'Almote', serif;
@@ -246,6 +276,7 @@ nav {
   font-style: italic;
   color: var(--accent);
   display: block;
+  color: #0a268a;
 }
 .hero-role {
   font-size: 0.8rem;
@@ -331,6 +362,7 @@ nav {
   display: block;
   position: relative; z-index: 1;
   box-shadow: 0 32px 64px var(--shadow);
+  background: var(--surface2);
 }
 .photo-tag {
   position: absolute;
@@ -395,17 +427,16 @@ nav {
 .stat-cell::before {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(91,124,255,0.04) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(143,160,255,0.05) 0%, transparent 60%);
 }
 .stat-num {
-  font-family: 'times nem romans', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 3rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-tint);
   display: block;
   line-height: 1;
 }
-[data-theme="light"] .stat-num { color: #7ba0ff; }
 .stat-lbl {
   font-size: 0.68rem;
   letter-spacing: 0.2em;
@@ -427,7 +458,7 @@ section { padding: 6rem 3.5rem; }
   margin-bottom: 0.7rem;
 }
 .section-title {
-  font-family: 'almote', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 500;
   line-height: 1.1;
@@ -445,7 +476,6 @@ section { padding: 6rem 3.5rem; }
 /* ─── SERVICES ─── */
 #services { background: var(--bg2); }
 .services-grid {
-   font-family: 'poppins', serif;
   margin-top: 3rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -466,7 +496,6 @@ section { padding: 6rem 3.5rem; }
   background: var(--accent);
   transition: height 0.35s;
   border-radius: 2px;
- 
 }
 .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px var(--shadow); border-color: var(--accent); }
 .service-card:hover::before { height: 100%; }
@@ -480,7 +509,8 @@ section { padding: 6rem 3.5rem; }
   transition: color 0.3s;
 }
 .service-card:hover .svc-num { color: var(--accent-light); }
-.svc-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+.svc-icon { margin-bottom: 1rem; }
+.svc-icon img { width: 42px; height: 42px; object-fit: contain; display: block; }
 .svc-name {
   font-family: 'almote', serif;
   font-size: 1.3rem;
@@ -491,8 +521,28 @@ section { padding: 6rem 3.5rem; }
 
 /* ─── PORTFOLIO ─── */
 #portfolio { background: var(--bg); }
+.filter-bar {
+  margin-top: 2.5rem;
+  display: flex; flex-wrap: wrap; gap: 0.6rem;
+}
+.filter-btn {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  padding: 0.55rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 .portfolio-grid {
-  margin-top: 3rem;
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.2rem;
@@ -504,7 +554,9 @@ section { padding: 6rem 3.5rem; }
   aspect-ratio: 2/3;
   cursor: pointer;
   background: var(--surface2);
+  transition: opacity 0.3s, transform 0.3s;
 }
+.portfolio-card.hidden { display: none; }
 .portfolio-card:nth-child(2) { grid-row: span 2; aspect-ratio: auto; }
 .portfolio-card img {
   width: 100%; height: 100%;
@@ -515,7 +567,7 @@ section { padding: 6rem 3.5rem; }
 .portfolio-card:hover img { transform: scale(1.07); }
 .p-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(11,31,74,0.95) 0%, transparent 55%);
+  background: linear-gradient(to top, rgba(11,19,48,0.95) 0%, transparent 55%);
   opacity: 0;
   transition: opacity 0.4s;
   display: flex; flex-direction: column; justify-content: flex-end;
@@ -526,11 +578,10 @@ section { padding: 6rem 3.5rem; }
   font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-tint);
   font-weight: 700;
   margin-bottom: 0.3rem;
 }
-[data-theme="light"] .p-cat { color: #7ba0ff; }
 .p-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem;
@@ -540,7 +591,7 @@ section { padding: 6rem 3.5rem; }
 
 /* ─── TOOLS ─── */
 #outils { background: var(--bg2); }
-.tools-wrap {font-family: 'poppins', serif; margin-top: 3rem; display: flex; flex-wrap: wrap; gap: 1rem; }
+.tools-wrap { margin-top: 3rem; display: flex; flex-wrap: wrap; gap: 1rem; }
 .tool-chip {
   display: inline-flex; align-items: center; gap: 0.6rem;
   background: var(--surface);
@@ -548,7 +599,6 @@ section { padding: 6rem 3.5rem; }
   border-radius: 2rem;
   padding: 0.7rem 1.4rem;
   font-size: 0.85rem;
-  
   font-weight: 600;
   color: var(--text);
   transition: all 0.25s;
@@ -563,19 +613,16 @@ section { padding: 6rem 3.5rem; }
   text-align: center;
   position: relative;
   overflow: hidden;
-  
 }
 #contact::before {
   content: '';
   position: absolute;
   top: -150px; left: 50%; transform: translateX(-50%);
   width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(91,124,255,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(143,160,255,0.16) 0%, transparent 70%);
   pointer-events: none;
-  
-  
 }
-#contact .section-eyebrow { color: #7ba0ff; }
+#contact .section-eyebrow { color: var(--accent-tint); }
 #contact .section-title { color: #fff; }
 .contact-desc { color: rgba(255,255,255,0.5); max-width: 480px; margin: 0.8rem auto 2.5rem; font-size: 0.95rem; line-height: 1.8; }
 .contact-links {
@@ -584,7 +631,7 @@ section { padding: 6rem 3.5rem; }
 }
 .contact-link {
   display: inline-flex; align-items: center; gap: 0.8rem;
-  color: #7ba0ff;
+  color: var(--accent-tint);
   text-decoration: none;
   font-size: clamp(0.95rem, 2vw, 1.25rem);
   font-family: 'poppins', serif;
@@ -592,9 +639,7 @@ section { padding: 6rem 3.5rem; }
   border-bottom: 1px solid rgba(123,160,255,0.3);
   padding-bottom: 0.2rem;
   transition: color 0.25s, border-color 0.25s;
-  
 }
-
 .contact-link:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
 .contact-icon { font-style: normal; font-size: 1.1rem; }
 .contact-footer-note { color: rgba(255,255,255,0.25); font-size: 0.75rem; letter-spacing: 0.1em; }
@@ -620,6 +665,17 @@ footer span { color: var(--accent); opacity: 0.6; }
 .reveal.visible {
   opacity: 1;
   transform: none;
+}
+
+/* ─── ACCESSIBILITY: REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
 }
 
 /* ─── RESPONSIVE ─── */
@@ -648,9 +704,7 @@ footer span { color: var(--accent); opacity: 0.6; }
   .shape-circle, .shape-square { display: none; }
   .stats-bar { grid-template-columns: repeat(2, 1fr); }
   section { padding: 4rem 1.5rem; }
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-  }
+  .portfolio-grid { grid-template-columns: 1fr; }
   .portfolio-card:nth-child(2) { grid-row: span 1; aspect-ratio: 2/3; }
   .services-grid { grid-template-columns: 1fr; }
   #contact { padding: 4rem 1.5rem; }
@@ -673,11 +727,14 @@ footer span { color: var(--accent); opacity: 0.6; }
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">FANAMBINANTSOA<span>.</span>DESIGN</a>
+  <img src="fanamby.png" alt="logo" width="38px">
+  <a class="nav-logo" href="#">
+  FANAMBINANTSOA <span>.</span>DESIGN</a>
   <ul class="nav-center">
     <li><a href="#services">Services</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#outils">Compétences</a></li>
+    <li><a href="cv.pdf" download>CV</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -685,7 +742,7 @@ footer span { color: var(--accent); opacity: 0.6; }
       <span class="theme-icon" id="themeIcon">☀️</span>
       <span id="themeLabel">Clair</span>
     </button>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -696,6 +753,7 @@ footer span { color: var(--accent); opacity: 0.6; }
   <a href="#services" onclick="closeMobile()">Services</a>
   <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
   <a href="#outils" onclick="closeMobile()">Compétences</a>
+  <a href="cv.pdf" download>CV</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
 </div>
 
@@ -714,18 +772,18 @@ footer span { color: var(--accent); opacity: 0.6; }
     </h1>
     <p class="hero-role">Designer Graphique Junior</p>
     <p class="hero-bio">
-      Je ne conçois pas le design comme de la simple décoration, mais comme un levier 
-      pour faire rayonner des projets. Je traduis des briefs complexes en univers visuels 
+      Je ne conçois pas le design comme de la simple décoration, mais comme un levier
+      pour faire rayonner des projets. Je traduis des briefs complexes en univers visuels
       uniques, structurés et modernes.
     </p>
     <div class="hero-cta">
       <a href="#portfolio" class="btn-primary">→ Voir mes projets</a>
-      <a href="#contact" class="btn-outline">✉ Me contacter</a>
+      <a href="cv.pdf" class="btn-outline" download>⬇ Télécharger mon CV</a>
     </div>
   </div>
   <div class="hero-photo reveal" style="transition-delay:0.15s">
     <div class="photo-wrap">
-      <img src="jonn.jpg" alt="portrait">
+      <img src="jonn.jpg" alt="Portrait de Fanambinantsoa Jonny Houssen">
       <div class="photo-tag">
         <strong>1+</strong>
         <span>an d'expérience</span>
@@ -739,7 +797,7 @@ footer span { color: var(--accent); opacity: 0.6; }
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat-cell reveal">
-    <span class="stat-num">4+</span>
+    <span class="stat-num">10+</span>
     <span class="stat-lbl">Types de créations</span>
   </div>
   <div class="stat-cell reveal" style="transition-delay:0.1s">
@@ -766,25 +824,25 @@ footer span { color: var(--accent); opacity: 0.6; }
   <div class="services-grid">
     <div class="service-card reveal">
       <div class="svc-num">01</div>
-      <div class="svc-icon"><img src="icon-icons.png" alt="logo"  width="50px"></div>
+      <div class="svc-icon"><img src="icon-icons.png" alt="" loading="lazy"></div>
       <h3 class="svc-name">Affiche & Flyers</h3>
       <p class="svc-desc">Conceptions impactantes pour vos événements, campagnes et promotions. Chaque visuel raconte une histoire.</p>
     </div>
     <div class="service-card reveal" style="transition-delay:0.1s">
       <div class="svc-num">02</div>
-       <div class="svc-icon"><img src="visite.png" alt="logo"  width="50px"></div>
+      <div class="svc-icon"><img src="visite.png" alt="" loading="lazy"></div>
       <h3 class="svc-name">Carte de visite</h3>
       <p class="svc-desc">Identités professionnelles soignées qui reflètent votre personnalité et inspirent confiance au premier regard.</p>
     </div>
     <div class="service-card reveal" style="transition-delay:0.2s">
       <div class="svc-num">03</div>
-       <div class="svc-icon"><img src="reseau.png" alt="logo"  width="50px"></div>
+      <div class="svc-icon"><img src="reseau.png" alt="" loading="lazy"></div>
       <h3 class="svc-name">Posts Réseaux Sociaux</h3>
       <p class="svc-desc">Contenus visuels optimisés pour Instagram, Facebook et LinkedIn — cohérents, accrocheurs, engageants.</p>
     </div>
     <div class="service-card reveal" style="transition-delay:0.3s">
       <div class="svc-num">04</div>
-       <div class="svc-icon"><img src="identite.png" alt="logo"  width="50px"></div>
+      <div class="svc-icon"><img src="identite.png" alt="" loading="lazy"></div>
       <h3 class="svc-name">Identité Visuelle</h3>
       <p class="svc-desc">Du brief au rendu final, je construis des univers visuels uniques qui font rayonner votre projet.</p>
     </div>
@@ -798,62 +856,91 @@ footer span { color: var(--accent); opacity: 0.6; }
     <h2 class="section-title">Mon <em>projet</em></h2>
     <p class="section-subtitle">Une sélection de créations récentes, chacune pensée pour l'impact visuel.</p>
   </div>
-  <div class="portfolio-grid">
-    <div class="portfolio-card reveal">
-      <img src="seminaire.jpg" alt="portfolio-card">
+  <div class="filter-bar reveal">
+    <button class="filter-btn active" data-filter="all">Tout</button>
+    <button class="filter-btn" data-filter="affiches">Affiches</button>
+    <button class="filter-btn" data-filter="social">Réseaux sociaux</button>
+    <button class="filter-btn" data-filter="identite">Identité visuelle</button>
+    <button class="filter-btn" data-filter="celebration">Célébrations</button>
+  </div>
+  <div class="portfolio-grid" id="portfolioGrid">
+    <div class="portfolio-card reveal" data-cat="affiches">
+      <img src="seminaire.jpg" alt="Affiche pour l'Eglise Royal Salut à Toliara" loading="lazy">
       <div class="p-overlay">
-        <span class="p-cat">Affiche religieux</span>
-        <span class="p-title"> Eglise Royal Salut — Toliara</span>
+        <span class="p-cat">Affiche religieuse</span>
+        <span class="p-title">Eglise Royal Salut — Toliara</span>
       </div>
     </div>
-    <div class="portfolio-card reveal" style="transition-delay:0.1s">
-      <img src="cilo.jpg" alt="portfolio-card">
+    <div class="portfolio-card reveal" data-cat="affiches" style="transition-delay:0.1s">
+      <img src="cilo.jpg" alt="Affiche d'événement pour EMIM" loading="lazy">
       <div class="p-overlay">
         <span class="p-cat">Affiche événement</span>
-        <span class="p-title">EMIM— Initiation au triangle d'exposition</span>
+        <span class="p-title">EMIM — Initiation au triangle d'exposition</span>
       </div>
     </div>
-    <div class="portfolio-card reveal" style="transition-delay:0.2s">
-      <img src="mayllah.jpg" alt="portfolio-card">
+      <div class="portfolio-card reveal" data-cat="identite" style="transition-delay:0.6s">
+      <img src="jocrea.png" alt="Logo pour le concours Irina Promotio ESSCA" loading="lazy">
+      <div class="p-overlay">
+        <span class="p-cat">Logo</span>
+        <span class="p-title">Profil du page facebook— JO Créa</span>
+      </div>
+    </div>
+    <div class="portfolio-card reveal" data-cat="celebration" style="transition-delay:0.2s">
+      <img src="mayllah.jpg" alt="Design pour anniversaire de Mayllah" loading="lazy">
       <div class="p-overlay">
         <span class="p-cat">Design célébration</span>
         <span class="p-title">Anniversaire — Mayllah</span>
       </div>
     </div>
-    <div class="portfolio-card reveal" style="transition-delay:0.1s">
-      <img src="liste.jpg" alt="portfolio-card">
+    <div class="portfolio-card reveal" data-cat="social" style="transition-delay:0.3s">
+      <img src="liste.jpg" alt="Post réseaux sociaux pour EMIKI" loading="lazy">
       <div class="p-overlay">
         <span class="p-cat">Post réseaux sociaux</span>
         <span class="p-title">EMIKI — Liste des joueurs</span>
       </div>
     </div>
-    <div class="portfolio-card reveal" style="transition-delay:0.2s">
-      <img src="podcast.jpg" alt="portfolio-card">
+    <div class="portfolio-card reveal" data-cat="social" style="transition-delay:0.4s">
+      <img src="podcast.jpg" alt="Post Facebook pour JO Créa" loading="lazy">
       <div class="p-overlay">
         <span class="p-cat">Post Facebook</span>
         <span class="p-title">JO Créa — Voix Off & Spot</span>
       </div>
-    
     </div>
-    <div class="portfolio-card reveal" style="transition-delay:0.1s">
-      <img src="june.jpg" alt="portfolio-card">
+    <div class="portfolio-card reveal" data-cat="celebration" style="transition-delay:0.5s">
+      <img src="june.jpg" alt="Design pour anniversaire de Jonny Le Zanakapanarivo" loading="lazy">
       <div class="p-overlay">
         <span class="p-cat">Design célébration</span>
         <span class="p-title">Anniversaire — Jonny Le Zanakapanarivo</span>
-  </div>
- </div>
-       <div class="portfolio-card reveal" style="transition-delay:0.1s">
-      <img src="irina.jpg" alt="portfolio-card">
+      </div>
+    </div>
+    <div class="portfolio-card reveal" data-cat="identite" style="transition-delay:0.6s">
+      <img src="irina.jpg" alt="Logo pour le concours Irina Promotio ESSCA" loading="lazy">
       <div class="p-overlay">
-        <span class="p-cat"> Concours Logo ESSCA</span>
-        <span class="p-title">Irina Promotio — 31éme Promotion ESSCA</span>
-  </div>
-  </div>
-  <div class="portfolio-card reveal" style="transition-delay:0.1s">
-      <img src="realise.jpg" alt="portfolio-card">
+        <span class="p-cat">Concours logo ESSCA</span>
+        <span class="p-title">Irina Promotio — 31ème Promotion ESSCA</span>
+      </div>
+    </div>
+      <div class="portfolio-card reveal" data-cat="social" style="transition-delay:0.7s">
+      <img src="post.jpg" alt="Post Facebook présentant les services de Jo Créa" loading="lazy">
+      <div class="p-overlay">
+        <span class="p-cat">Post Facebook</span>
+        <span class="p-title">Jo Créa — Voix off publicitaire</span>
+      </div>
+    </div>
+    <div class="portfolio-card reveal" data-cat="social" style="transition-delay:0.7s">
+      <img src="service.jpg" alt="Post Facebook présentant les services de Jo Créa" loading="lazy">
       <div class="p-overlay">
         <span class="p-cat">Post Facebook</span>
         <span class="p-title">Jo Créa — Vos services</span>
+      </div>
+    </div>
+    <div class="portfolio-card reveal" data-cat="celebration" style="transition-delay:0.5s">
+      <img src="sto.jpg" alt="Design pour anniversaire de Jonny Le Zanakapanarivo" loading="lazy">
+      <div class="p-overlay">
+        <span class="p-cat">Design célébration</span>
+        <span class="p-title">Anniversaire — Stony</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -866,16 +953,16 @@ footer span { color: var(--accent); opacity: 0.6; }
   </div>
   <div class="tools-wrap">
     <span class="tool-chip reveal"><span class="chip-dot"></span>Adobe Photoshop</span>
-    <span class="tool-chip reveal" style="transition-delay:0.05s"><span class="chip-dot"></span>Canva </span>
+    <span class="tool-chip reveal" style="transition-delay:0.05s"><span class="chip-dot"></span>Canva</span>
     <span class="tool-chip reveal" style="transition-delay:0.1s"><span class="chip-dot"></span>Conception d'affiches</span>
-    <span class="tool-chip reveal" style="transition-delay:0.15s"><span class="chip-dot"></span>Flyers & Print</span>
+    <span class="tool-chip reveal" style="transition-delay:0.15s"><span class="chip-dot"></span>Flyers</span>
     <span class="tool-chip reveal" style="transition-delay:0.2s"><span class="chip-dot"></span>Réseaux Sociaux</span>
     <span class="tool-chip reveal" style="transition-delay:0.25s"><span class="chip-dot"></span>Carte de visite</span>
     <span class="tool-chip reveal" style="transition-delay:0.3s"><span class="chip-dot"></span>Typographie</span>
     <span class="tool-chip reveal" style="transition-delay:0.35s"><span class="chip-dot"></span>Mise en page</span>
     <span class="tool-chip reveal" style="transition-delay:0.4s"><span class="chip-dot"></span>Identité visuelle</span>
-    <span class="tool-chip reveal" style="transition-delay:0.4s"><span class="chip-dot"></span>Marketing publicitaire</span>
-    <span class="tool-chip reveal" style="transition-delay:0.4s"><span class="chip-dot"></span>PAO</span>
+    <span class="tool-chip reveal" style="transition-delay:0.45s"><span class="chip-dot"></span>Marketing publicitaire</span>
+    <span class="tool-chip reveal" style="transition-delay:0.5s"><span class="chip-dot"></span>PAO</span>
   </div>
 </section>
 
@@ -886,15 +973,18 @@ footer span { color: var(--accent); opacity: 0.6; }
     <h2 class="section-title">Prêt à donner vie<br>à <em>votre projet</em> ?</h2>
   </div>
   <p class="contact-desc reveal">
-    Vous avez un projet, une idée, un brief ? Contactez-moi et construisons ensemble 
+    Vous avez un projet, une idée, un brief ? Contactez-moi et construisons ensemble
     un univers visuel qui vous ressemble.
   </p>
   <div class="contact-links reveal">
-    <a class="contact-link" href="https://wa.me/261387125252" target="_blank">
-      <span class="contact-icon">💬</span> WhatsApp : +261 38 712 52 52
+    <a class="contact-link" href="https://wa.me/261387125252" target="_blank" rel="noopener">
+      <span class="contact-icon">💬</span> WhatsApp : +261 38 71 252 52
     </a>
-    <a class="contact-link" href="https://mail.google.com/mail/fanambinantsoajonnyhoussen@gmail.com">
+    <a class="contact-link" href="mailto:fanambinantsoajonnyhoussen@gmail.com">
       <span class="contact-icon">✉</span> fanambinantsoajonnyhoussen@gmail.com
+    </a>
+    <a class="contact-link" href="cv.pdf" download>
+      <span class="contact-icon">⬇</span> Télécharger mon CV (PDF)
     </a>
   </div>
   <p class="contact-footer-note reveal">Basé à Madagascar · Disponible pour mission à distance</p>
@@ -906,28 +996,30 @@ footer span { color: var(--accent); opacity: 0.6; }
 </footer>
 
 <script>
-// ── CURSOR
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-(function loop() {
-  rx += (mx - rx) * 0.18;
-  ry += (my - ry) * 0.18;
-  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-  requestAnimationFrame(loop);
-})();
-document.querySelectorAll('a, button, .service-card, .portfolio-card, .tool-chip').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.width = '18px'; cursor.style.height = '18px';
-    ring.style.width = '56px'; ring.style.height = '56px';
+// ── CURSOR (mouse only)
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function loop() {
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a, button, .service-card, .portfolio-card, .tool-chip').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '18px'; cursor.style.height = '18px';
+      ring.style.width = '56px'; ring.style.height = '56px';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '10px'; cursor.style.height = '10px';
+      ring.style.width = '36px'; ring.style.height = '36px';
+    });
   });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.width = '10px'; cursor.style.height = '10px';
-    ring.style.width = '36px'; ring.style.height = '36px';
-  });
-});
+}
 
 // ── THEME TOGGLE
 const html = document.documentElement;
@@ -946,13 +1038,30 @@ btn.addEventListener('click', () => {
 const ham = document.getElementById('hamburger');
 const mob = document.getElementById('mobileMenu');
 ham.addEventListener('click', () => {
-  ham.classList.toggle('open');
+  const isOpen = ham.classList.toggle('open');
   mob.classList.toggle('open');
+  ham.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 });
 function closeMobile() {
   ham.classList.remove('open');
   mob.classList.remove('open');
+  ham.setAttribute('aria-expanded', 'false');
 }
+
+// ── PORTFOLIO FILTER
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.portfolio-card');
+filterBtns.forEach(fb => {
+  fb.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    fb.classList.add('active');
+    const filter = fb.dataset.filter;
+    cards.forEach(card => {
+      const match = filter === 'all' || card.dataset.cat === filter;
+      card.classList.toggle('hidden', !match);
+    });
+  });
+});
 
 // ── SCROLL REVEAL
 const reveals = document.querySelectorAll('.reveal');
